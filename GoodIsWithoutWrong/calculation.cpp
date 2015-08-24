@@ -2,26 +2,27 @@
 #include "iostream"
 #include "memory.h"
 #include "stdio.h"
+#include "stdlib.h"
 #include "string"
 
 using namespace std;
 
 calculation::calculation(std::string setFirstOperation, std::string setSecondOperation) {
 
-	this.firstOperation = isOpValid(setFirstOperation);
-	this.secondOperation = isOpValid(setSecondOperation);
+	this->firstOperation = isOpValid(setFirstOperation);
+	this->secondOperation = isOpValid(setSecondOperation);
 }
 
 void calculation::addition(double firstOperation, double secondOperation) {
-		this.result = firstOperation + secondOperation;
+		this->result = firstOperation + secondOperation;
 }
 
 void calculation::subtraction(double firstOperation, double secondOperation) {
-	this.result = firstOperation - secondOperation;
+	this->result = firstOperation - secondOperation;
 }
 
 void calculation::multiplication(double firstOperation, double secondOperation) {
-	this.result = firstOperation * secondOperation;
+	this->result = firstOperation * secondOperation;
 }
 
 void calculation::division(double firstOperation, double secondOperation) {
@@ -29,7 +30,7 @@ void calculation::division(double firstOperation, double secondOperation) {
 		if (secondOperation == 0) {
 			throw "除数不能为0！！";
 		} else {
-			this.result = firstOperation / secondOperation;
+			result = firstOperation / secondOperation;
 		}
 	}
 	catch(std::string e) {
@@ -38,8 +39,8 @@ void calculation::division(double firstOperation, double secondOperation) {
 }
 
 void calculation::set(double firstOperation, double secondOperation) {
-	this.firstOperation = firstOperation;
-	this.secondOperation = secondOperation;
+	this->firstOperation = firstOperation;
+	this->secondOperation = secondOperation;
 }
 
 
@@ -63,17 +64,17 @@ void calculation::setSecondOperation(double target) {
 
 void calculation::whichToUse(std::string calculationOp) {
 	try {
-		switch(calculationOp) {
-			case "+":
+		switch(calculationOp[0]) {
+			case '+':
 				addition(firstOperation, secondOperation);
 				break;
-			case "-":
+			case '-':
 				subtraction(firstOperation, secondOperation);
 				break;
-			case "/":
+			case '/':
 				division(firstOperation, secondOperation);
 				break;
-			case "*":
+			case '*':
 				multiplication(firstOperation, secondOperation);
 				break;
 			default: 
@@ -89,7 +90,7 @@ double calculation::isOpValid(std::string Op) {
 	double temp;
 	try {
 		char *a=new char[Op.size()+1];
-		memcpy(a, OP.c_str(), s.size());
+		memcpy(a, Op.c_str(), Op.size());
 		temp = atof(a);
 	}
 	catch(exception& e) {
@@ -98,8 +99,8 @@ double calculation::isOpValid(std::string Op) {
 	return temp;
 }
 
-double getResult() {
-	return this.result;
+double calculation::getResult() {
+	return result;
 }
 
 
