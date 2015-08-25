@@ -11,7 +11,6 @@ calculation::calculation(std::string setFirstOperation, std::string setSecondOpe
 
 	this->firstOperation = isOpValid(setFirstOperation);
 	this->secondOperation = isOpValid(setSecondOperation);
-	int i = 0;
 }
 
 void calculation::addition(double firstOperation, double secondOperation) {
