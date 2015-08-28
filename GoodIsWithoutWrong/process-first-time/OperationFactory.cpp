@@ -6,7 +6,8 @@ calculation* OperationFactory::getInstance(std::string calculationOp, std::strin
 	calculation *singleInstance = NULL;
 	try {
 		if (calculationOp.size() >= 2) {
-			throw "计算符号不正确！！";
+			string errorTip = "计算符号不正确！！";
+			throw errorTip;
 		}
 		switch(calculationOp[0]) {
 			case '+':
@@ -22,7 +23,8 @@ calculation* OperationFactory::getInstance(std::string calculationOp, std::strin
 				singleInstance = new multiplication(setFirstOperation, setSecondOperation);
 				break;
 			default: 
-				throw "符号不正确！！";
+				string errorTip = "计算符号不正确！！";
+				throw errorTip;
 		}
 	}
 	catch(std::string e) {

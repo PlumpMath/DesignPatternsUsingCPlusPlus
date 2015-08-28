@@ -5,7 +5,8 @@ division::division(std::string setFirstOperation, std::string setSecondOperation
 double division::getResult(double firstOperation, double secondOperation) {
 	try {
 		if (secondOperation == 0) {
-			throw "除数不能为0！！";
+			string errorTip =  "除数不能为0！！";
+			throw errorTip;
 		} else {
 			result = firstOperation / secondOperation;
 		}
